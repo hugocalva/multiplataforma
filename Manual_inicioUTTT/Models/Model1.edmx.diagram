@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="47351f75baf74b5c9f34f13ec63602cd" Name="Diagram1">
+        <EntityTypeShape EntityType="ITLACursosModel.Actividad" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Administradores" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Alumno" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Cuenta" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Curso" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Inscripcion" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Inscripcion_Actividad" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.InscripcionResponsable" Width="1.5" PointX="11.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Parentesco" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Privilegio" Width="1.5" PointX="1.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Responsable" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Sexo" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Taller" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.Tutor" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITLACursosModel.UserProfile" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ITLACursosModel.FK_Actividad_Responsable" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Actividad_Taller" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Alumno_Actividad_Actividad" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Administradores_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Administradores_Sexo" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Alumno_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Alumno_Parentesco" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Alumno_Sexo" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Alumno_Tutor" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Inscripcion_Alumno1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Cuenta_Privilegio" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Responsable_Cuenta1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Taller_Curso" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Inscripcion_Actividad_Inscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Inscripcion_Taller1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_InscripcionResponsable_Responsable1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_InscripcionResponsable_Taller1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Responsable_Sexo" ManuallyRouted="false" />
+        <AssociationConnector Association="ITLACursosModel.FK_Tutor_Sexo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

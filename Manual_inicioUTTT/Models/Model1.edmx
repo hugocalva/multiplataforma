@@ -1,0 +1,1209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITLACursosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="puntos" Type="int" Nullable="false" />
+          <Property Name="idResponsable" Type="int" Nullable="false" />
+          <Property Name="idTaller" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idSexo" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecNac" Type="date" Nullable="false" />
+          <Property Name="idSexo" Type="int" Nullable="false" />
+          <Property Name="idTutor" Type="int" Nullable="false" />
+          <Property Name="idParentesco" Type="int" Nullable="false" />
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+          <Property Name="imagen" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idPrivilegio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fechaInicio" Type="date" Nullable="false" />
+          <Property Name="fechaTermino" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTaller" Type="int" Nullable="false" />
+          <Property Name="idAlumno" Type="int" Nullable="false" />
+          <Property Name="fechaInscripcion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscripcion_Actividad">
+          <Key>
+            <PropertyRef Name="idInscripcion" />
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idInscripcion" Type="int" Nullable="false" />
+          <Property Name="idActividad" Type="int" Nullable="false" />
+          <Property Name="puntos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InscripcionResponsable">
+          <Key>
+            <PropertyRef Name="idResponsable" />
+            <PropertyRef Name="idTaller" />
+          </Key>
+          <Property Name="idResponsable" Type="int" Nullable="false" />
+          <Property Name="idTaller" Type="int" Nullable="false" />
+          <Property Name="fechaInscripcion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idSexo" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="idCuenta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Taller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idCurso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idSexo" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Actividad_Responsable">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Taller">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administradores_Cuenta">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administradores">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administradores_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administradores">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Actividad_Actividad">
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+          <End Role="Inscripcion_Actividad" Type="Self.Inscripcion_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Actividad">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Cuenta">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idParentesco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idTutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Privilegio">
+          <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idPrivilegio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Actividad_Inscripcion">
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="1" />
+          <End Role="Inscripcion_Actividad" Type="Self.Inscripcion_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Actividad">
+              <PropertyRef Name="idInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Alumno1">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Taller1">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionResponsable_Responsable1">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="InscripcionResponsable" Type="Self.InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="idResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionResponsable_Taller1">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="InscripcionResponsable" Type="Self.InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Cuenta1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Taller_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Taller" Type="Self.Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Taller">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tutor_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tutor">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITLACursosModelStoreContainer">
+          <EntitySet Name="Actividad" EntityType="Self.Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administradores" EntityType="Self.Administradores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripcion" EntityType="Self.Inscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripcion_Actividad" EntityType="Self.Inscripcion_Actividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InscripcionResponsable" EntityType="Self.InscripcionResponsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilegio" EntityType="Self.Privilegio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Responsable" EntityType="Self.Responsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taller" EntityType="Self.Taller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Actividad_Responsable" Association="Self.FK_Actividad_Responsable">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Taller" Association="Self.FK_Actividad_Taller">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administradores_Cuenta" Association="Self.FK_Administradores_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Administradores" EntitySet="Administradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administradores_Sexo" Association="Self.FK_Administradores_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Administradores" EntitySet="Administradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Actividad_Actividad" Association="Self.FK_Alumno_Actividad_Actividad">
+            <End Role="Actividad" EntitySet="Actividad" />
+            <End Role="Inscripcion_Actividad" EntitySet="Inscripcion_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Cuenta" Association="Self.FK_Alumno_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Parentesco" Association="Self.FK_Alumno_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Sexo" Association="Self.FK_Alumno_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Tutor" Association="Self.FK_Alumno_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Privilegio" Association="Self.FK_Cuenta_Privilegio">
+            <End Role="Privilegio" EntitySet="Privilegio" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Actividad_Inscripcion" Association="Self.FK_Inscripcion_Actividad_Inscripcion">
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+            <End Role="Inscripcion_Actividad" EntitySet="Inscripcion_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Alumno1" Association="Self.FK_Inscripcion_Alumno1">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Taller1" Association="Self.FK_Inscripcion_Taller1">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Responsable1" Association="Self.FK_InscripcionResponsable_Responsable1">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Taller1" Association="Self.FK_InscripcionResponsable_Taller1">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Cuenta1" Association="Self.FK_Responsable_Cuenta1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Sexo" Association="Self.FK_Responsable_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Taller_Curso" Association="Self.FK_Taller_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Taller" EntitySet="Taller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tutor_Sexo" Association="Self.FK_Tutor_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Tutor" EntitySet="Tutor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITLACursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="puntos" Type="Int32" Nullable="false" />
+          <Property Name="idResponsable" Type="Int32" Nullable="false" />
+          <Property Name="idTaller" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK_Actividad_Responsable" FromRole="Actividad" ToRole="Responsable" />
+          <NavigationProperty Name="Taller" Relationship="Self.FK_Actividad_Taller" FromRole="Actividad" ToRole="Taller" />
+          <NavigationProperty Name="Inscripcion_Actividad" Relationship="Self.FK_Alumno_Actividad_Actividad" FromRole="Actividad" ToRole="Inscripcion_Actividad" />
+        </EntityType>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idSexo" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Administradores_Cuenta" FromRole="Administradores" ToRole="Cuenta" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Administradores_Sexo" FromRole="Administradores" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idSexo" Type="Int32" Nullable="false" />
+          <Property Name="idTutor" Type="Int32" Nullable="false" />
+          <Property Name="idParentesco" Type="Int32" Nullable="false" />
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Alumno_Cuenta" FromRole="Alumno" ToRole="Cuenta" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK_Alumno_Parentesco" FromRole="Alumno" ToRole="Parentesco" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Alumno_Sexo" FromRole="Alumno" ToRole="Sexo" />
+          <NavigationProperty Name="Tutor" Relationship="Self.FK_Alumno_Tutor" FromRole="Alumno" ToRole="Tutor" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Alumno1" FromRole="Alumno" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPrivilegio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administradores" Relationship="Self.FK_Administradores_Cuenta" FromRole="Cuenta" ToRole="Administradores" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Cuenta" FromRole="Cuenta" ToRole="Alumno" />
+          <NavigationProperty Name="Privilegio" Relationship="Self.FK_Cuenta_Privilegio" FromRole="Cuenta" ToRole="Privilegio" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK_Responsable_Cuenta1" FromRole="Cuenta" ToRole="Responsable" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaTermino" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Taller" Relationship="Self.FK_Taller_Curso" FromRole="Curso" ToRole="Taller" />
+        </EntityType>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTaller" Type="Int32" Nullable="false" />
+          <Property Name="idAlumno" Type="Int32" Nullable="false" />
+          <Property Name="fechaInscripcion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Inscripcion_Alumno1" FromRole="Inscripcion" ToRole="Alumno" />
+          <NavigationProperty Name="Inscripcion_Actividad" Relationship="Self.FK_Inscripcion_Actividad_Inscripcion" FromRole="Inscripcion" ToRole="Inscripcion_Actividad" />
+          <NavigationProperty Name="Taller" Relationship="Self.FK_Inscripcion_Taller1" FromRole="Inscripcion" ToRole="Taller" />
+        </EntityType>
+        <EntityType Name="Inscripcion_Actividad">
+          <Key>
+            <PropertyRef Name="idInscripcion" />
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idInscripcion" Type="Int32" Nullable="false" />
+          <Property Name="idActividad" Type="Int32" Nullable="false" />
+          <Property Name="puntos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividad" Relationship="Self.FK_Alumno_Actividad_Actividad" FromRole="Inscripcion_Actividad" ToRole="Actividad" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Actividad_Inscripcion" FromRole="Inscripcion_Actividad" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="InscripcionResponsable">
+          <Key>
+            <PropertyRef Name="idResponsable" />
+            <PropertyRef Name="idTaller" />
+          </Key>
+          <Property Name="idResponsable" Type="Int32" Nullable="false" />
+          <Property Name="idTaller" Type="Int32" Nullable="false" />
+          <Property Name="fechaInscripcion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK_InscripcionResponsable_Responsable1" FromRole="InscripcionResponsable" ToRole="Responsable" />
+          <NavigationProperty Name="Taller" Relationship="Self.FK_InscripcionResponsable_Taller1" FromRole="InscripcionResponsable" ToRole="Taller" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Parentesco" FromRole="Parentesco" ToRole="Alumno" />
+        </EntityType>
+        <EntityType Name="Privilegio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuenta_Privilegio" FromRole="Privilegio" ToRole="Cuenta" />
+        </EntityType>
+        <EntityType Name="Responsable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idSexo" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCuenta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividad" Relationship="Self.FK_Actividad_Responsable" FromRole="Responsable" ToRole="Actividad" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Responsable_Cuenta1" FromRole="Responsable" ToRole="Cuenta" />
+          <NavigationProperty Name="InscripcionResponsable" Relationship="Self.FK_InscripcionResponsable_Responsable1" FromRole="Responsable" ToRole="InscripcionResponsable" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Responsable_Sexo" FromRole="Responsable" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Administradores" Relationship="Self.FK_Administradores_Sexo" FromRole="Sexo" ToRole="Administradores" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Sexo" FromRole="Sexo" ToRole="Alumno" />
+          <NavigationProperty Name="Responsable" Relationship="Self.FK_Responsable_Sexo" FromRole="Sexo" ToRole="Responsable" />
+          <NavigationProperty Name="Tutor" Relationship="Self.FK_Tutor_Sexo" FromRole="Sexo" ToRole="Tutor" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Taller">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCurso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividad" Relationship="Self.FK_Actividad_Taller" FromRole="Taller" ToRole="Actividad" />
+          <NavigationProperty Name="Curso" Relationship="Self.FK_Taller_Curso" FromRole="Taller" ToRole="Curso" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Taller1" FromRole="Taller" ToRole="Inscripcion" />
+          <NavigationProperty Name="InscripcionResponsable" Relationship="Self.FK_InscripcionResponsable_Taller1" FromRole="Taller" ToRole="InscripcionResponsable" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idSexo" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Tutor" FromRole="Tutor" ToRole="Alumno" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Tutor_Sexo" FromRole="Tutor" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Actividad_Responsable">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Taller">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Actividad_Actividad">
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="1" />
+          <End Role="Inscripcion_Actividad" Type="Self.Inscripcion_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Actividad">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administradores_Cuenta">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administradores">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administradores_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administradores">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Cuenta">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Parentesco">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idParentesco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Alumno_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="idTutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Alumno1">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuenta_Privilegio">
+          <End Role="Privilegio" Type="Self.Privilegio" Multiplicity="1" />
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cuenta">
+              <PropertyRef Name="idPrivilegio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Cuenta1">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="idCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Taller_Curso">
+          <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+          <End Role="Taller" Type="Self.Taller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Taller">
+              <PropertyRef Name="idCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Actividad_Inscripcion">
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="1" />
+          <End Role="Inscripcion_Actividad" Type="Self.Inscripcion_Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripcion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion_Actividad">
+              <PropertyRef Name="idInscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Taller1">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionResponsable_Responsable1">
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="1" />
+          <End Role="InscripcionResponsable" Type="Self.InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Responsable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="idResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionResponsable_Taller1">
+          <End Role="Taller" Type="Self.Taller" Multiplicity="1" />
+          <End Role="InscripcionResponsable" Type="Self.InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Taller">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="idTaller" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Responsable_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Responsable" Type="Self.Responsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Responsable">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tutor_Sexo">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tutor">
+              <PropertyRef Name="idSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITLACursosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actividad" EntityType="Self.Actividad" />
+          <EntitySet Name="Administradores" EntityType="Self.Administradores" />
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" />
+          <EntitySet Name="Inscripcion" EntityType="Self.Inscripcion" />
+          <EntitySet Name="Inscripcion_Actividad" EntityType="Self.Inscripcion_Actividad" />
+          <EntitySet Name="InscripcionResponsable" EntityType="Self.InscripcionResponsable" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" />
+          <EntitySet Name="Privilegio" EntityType="Self.Privilegio" />
+          <EntitySet Name="Responsable" EntityType="Self.Responsable" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Taller" EntityType="Self.Taller" />
+          <EntitySet Name="Tutor" EntityType="Self.Tutor" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" />
+          <AssociationSet Name="FK_Actividad_Responsable" Association="Self.FK_Actividad_Responsable">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Taller" Association="Self.FK_Actividad_Taller">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Actividad_Actividad" Association="Self.FK_Alumno_Actividad_Actividad">
+            <End Role="Actividad" EntitySet="Actividad" />
+            <End Role="Inscripcion_Actividad" EntitySet="Inscripcion_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administradores_Cuenta" Association="Self.FK_Administradores_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Administradores" EntitySet="Administradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administradores_Sexo" Association="Self.FK_Administradores_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Administradores" EntitySet="Administradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Cuenta" Association="Self.FK_Alumno_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Parentesco" Association="Self.FK_Alumno_Parentesco">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Sexo" Association="Self.FK_Alumno_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Alumno_Tutor" Association="Self.FK_Alumno_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Alumno1" Association="Self.FK_Inscripcion_Alumno1">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuenta_Privilegio" Association="Self.FK_Cuenta_Privilegio">
+            <End Role="Privilegio" EntitySet="Privilegio" />
+            <End Role="Cuenta" EntitySet="Cuenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Cuenta1" Association="Self.FK_Responsable_Cuenta1">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Taller_Curso" Association="Self.FK_Taller_Curso">
+            <End Role="Curso" EntitySet="Curso" />
+            <End Role="Taller" EntitySet="Taller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Actividad_Inscripcion" Association="Self.FK_Inscripcion_Actividad_Inscripcion">
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+            <End Role="Inscripcion_Actividad" EntitySet="Inscripcion_Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Taller1" Association="Self.FK_Inscripcion_Taller1">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Responsable1" Association="Self.FK_InscripcionResponsable_Responsable1">
+            <End Role="Responsable" EntitySet="Responsable" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Taller1" Association="Self.FK_InscripcionResponsable_Taller1">
+            <End Role="Taller" EntitySet="Taller" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Responsable_Sexo" Association="Self.FK_Responsable_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Responsable" EntitySet="Responsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tutor_Sexo" Association="Self.FK_Tutor_Sexo">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Tutor" EntitySet="Tutor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITLACursosModelStoreContainer" CdmEntityContainer="ITLACursosEntities">
+          <EntitySetMapping Name="Actividad">
+            <EntityTypeMapping TypeName="ITLACursosModel.Actividad">
+              <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="idResponsable" ColumnName="idResponsable" />
+                <ScalarProperty Name="idTaller" ColumnName="idTaller" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administradores">
+            <EntityTypeMapping TypeName="ITLACursosModel.Administradores">
+              <MappingFragment StoreEntitySet="Administradores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="ITLACursosModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="fecNac" ColumnName="fecNac" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="idTutor" ColumnName="idTutor" />
+                <ScalarProperty Name="idParentesco" ColumnName="idParentesco" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="ITLACursosModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="idPrivilegio" ColumnName="idPrivilegio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="ITLACursosModel.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaTermino" ColumnName="fechaTermino" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripcion">
+            <EntityTypeMapping TypeName="ITLACursosModel.Inscripcion">
+              <MappingFragment StoreEntitySet="Inscripcion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTaller" ColumnName="idTaller" />
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripcion_Actividad">
+            <EntityTypeMapping TypeName="ITLACursosModel.Inscripcion_Actividad">
+              <MappingFragment StoreEntitySet="Inscripcion_Actividad">
+                <ScalarProperty Name="idInscripcion" ColumnName="idInscripcion" />
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InscripcionResponsable">
+            <EntityTypeMapping TypeName="ITLACursosModel.InscripcionResponsable">
+              <MappingFragment StoreEntitySet="InscripcionResponsable">
+                <ScalarProperty Name="idResponsable" ColumnName="idResponsable" />
+                <ScalarProperty Name="idTaller" ColumnName="idTaller" />
+                <ScalarProperty Name="fechaInscripcion" ColumnName="fechaInscripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parentesco">
+            <EntityTypeMapping TypeName="ITLACursosModel.Parentesco">
+              <MappingFragment StoreEntitySet="Parentesco">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilegio">
+            <EntityTypeMapping TypeName="ITLACursosModel.Privilegio">
+              <MappingFragment StoreEntitySet="Privilegio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Responsable">
+            <EntityTypeMapping TypeName="ITLACursosModel.Responsable">
+              <MappingFragment StoreEntitySet="Responsable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="idCuenta" ColumnName="idCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexo">
+            <EntityTypeMapping TypeName="ITLACursosModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ITLACursosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taller">
+            <EntityTypeMapping TypeName="ITLACursosModel.Taller">
+              <MappingFragment StoreEntitySet="Taller">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idCurso" ColumnName="idCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutor">
+            <EntityTypeMapping TypeName="ITLACursosModel.Tutor">
+              <MappingFragment StoreEntitySet="Tutor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="aPaterno" ColumnName="aPaterno" />
+                <ScalarProperty Name="aMaterno" ColumnName="aMaterno" />
+                <ScalarProperty Name="idSexo" ColumnName="idSexo" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfile">
+            <EntityTypeMapping TypeName="ITLACursosModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
